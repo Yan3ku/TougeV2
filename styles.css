@@ -127,7 +127,6 @@ footer {
     align-items: center;
     border-bottom: 1px solid var(--color-blue);
     background-color: var(--color-bg);
-    background-color: red;
     z-index: 1000;
 }
 
@@ -136,33 +135,30 @@ footer {
 }
 
 .content-table {
-    /* animation: slide 0.6s ease-out; */
-    /* display: none; */
+    transition: transform .5s cubic-bezier(.4,0,.2,1);
     position: fixed;
-    top: -2.5em;
+    top: 2.5em;
     right: 0;
     border-color: var(--color-blue);
     border-style: solid;
-    border-width: 0 0 1px 1px;
+    border-width: 0px 0 1px 1px;
     padding: 0.5em;
     background-color: var(--color-bg);
     list-style: none;
+    transform: translateY(-100%);
     z-index: -1;
 }
 
-@keyframes slide {
-    from { transform: translateY(-100%); }
-    to { transform: translateY(0);}
-}
-
 .dropdown {
-    background-color: red;
+    /* width: 50%;
+    text-align: right;
+    background-color: #1a1b26; */
     cursor: pointer;
 }
 
-
 .dropdown:hover .content-table {
     display: block;
+    transform: translateY(0);
 }
 
 .content-table a {
