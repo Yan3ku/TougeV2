@@ -31,6 +31,30 @@ body {
     margin-top:  2.5em; /* top-bar */
 }
 
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+p {
+    margin: 1em 0;
+}
+
+ul {
+    padding: 0 2em;
+}
+
+dt {
+    margin: 1em 0;
+    font-style: italic;
+    font-size: larger;
+}
+
+dd {
+    margin-left: 1em;
+}
+
 main {
     width: 750px;
     margin: 0 auto;
@@ -42,20 +66,6 @@ footer {
     font-size: smaller;
 }
 
-.topbar {
-    background-color: var(--color-bg);
-    font-weight: bold;
-    position: fixed;
-    top: 0;
-    text-transform: uppercase;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5em 1em;
-    border-bottom: 1px solid var(--color-blue);
-    z-index: 1000;
-}
 
 .title {
     text-align: center;
@@ -105,20 +115,57 @@ footer {
     width: 100%;
 }
 
-.content-table {
-    animation: navbar-slide 1s ease-in-out;
+
+.topbar {
+    font-weight: bold;
     position: fixed;
-    top: 2.5em;
+    top: 0;
+    text-transform: uppercase;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--color-blue);
+    background-color: var(--color-bg);
+    background-color: red;
+    z-index: 1000;
+}
+
+.topbar > div {
+    padding: 0.5em 1em;
+}
+
+.content-table {
+    /* animation: slide 0.6s ease-out; */
+    /* display: none; */
+    position: fixed;
+    top: -2.5em;
     right: 0;
     border-color: var(--color-blue);
     border-style: solid;
     border-width: 0 0 1px 1px;
     padding: 0.5em;
     background-color: var(--color-bg);
-    z-index: 999;
+    list-style: none;
+    z-index: -1;
 }
 
-.content-table__item {
+@keyframes slide {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0);}
+}
+
+.dropdown {
+    background-color: red;
+    cursor: pointer;
+}
+
+
+.dropdown:hover .content-table {
+    display: block;
+}
+
+.content-table a {
     display: flex;
     gap: 4em;
     font-size: smaller;
@@ -140,29 +187,6 @@ footer {
 .content-table a:hover {
     opacity: 100%;
     border-bottom: 1px solid var(--color-text);
-}
-
-a {
-    color: inherit;
-    text-decoration: inherit;
-}
-
-p {
-    margin: 1em 0;
-}
-
-ul {
-    padding: 0 2em;
-}
-
-dt {
-    margin: 1em 0;
-    font-style: italic;
-    font-size: larger;
-}
-
-dd {
-    margin-left: 1em;
 }
 
 .technique__dl img {
@@ -203,15 +227,6 @@ dd {
 
 .link:hover {
     text-decoration: underline;
-}
-
-@keyframes navbar-slide {
-    from {
-        transform: translateY(-100%);
-    }
-    to {
-        transform: translateY(0);
-    }
 }
 
 .gallery {
