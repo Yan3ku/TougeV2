@@ -8,13 +8,24 @@
 
 
 :root {
-  font-size: 62.5%;
   scroll-behavior: smooth;
 
   --color-bg:     #1a1b26;
   --color-text:   #c0caf5;
   --color-blue:   #7aa2f7;
   --color-magenta:#bb9af7;
+
+
+  /* utopia: 350-900 14-20 1.2-1.33 */
+  --space-xl: clamp(2.625rem, 1.9091rem + 3.2727vw, 3.75rem);
+  --step--2: clamp(0.6075rem, 0.5463rem + 0.28vw, 0.7038rem);
+  --step--1: clamp(0.7294rem, 0.5969rem + 0.6055vw, 0.9375rem);
+  --step-0: clamp(0.875rem, 0.6364rem + 1.0909vw, 1.25rem);
+  --step-1: clamp(1.05rem, 0.6578rem + 1.7927vw, 1.6663rem);
+  --step-2: clamp(1.26rem, 0.6483rem + 2.7964vw, 2.2213rem);
+  --step-3: clamp(1.5119rem, 0.5899rem + 4.2145vw, 2.9606rem);
+  --step-4: clamp(1.8144rem, 0.4573rem + 6.2036vw, 3.9469rem);
+  --step-5: clamp(2.1775rem, 0.2155rem + 8.9691vw, 5.2606rem);
 }
 
 ::selection {
@@ -25,10 +36,11 @@
 body {
   background:  var(--color-bg);
   color:       var(--color-text);
-  font-size:   1.6rem;
   line-height: 1.5em;
   font-family: "Roboto", "Noto Sans JP", sans-serif;
   margin-top:  2.5em; /* top-bar */
+
+  font-size:   var(--step-0);
 }
 
 /*
@@ -50,7 +62,7 @@ ul {
 dt {
   margin: 1em 0;
   font-style: italic;
-  font-size: larger;
+  font-size: var(--step-1);
 }
 
 dd {
@@ -70,14 +82,14 @@ a:hover {
 
 
 main {
-  max-width: 750px;
+  max-width: 70ch;
   margin: 0 auto;
 }
 
 footer {
   text-align: center;
   font-style: italic;
-  font-size: smaller;
+  font-size: var(--step--1);
 }
 
 input {
@@ -99,7 +111,7 @@ fieldset {
 .title__heading {
   padding-top: 1em;
   font-weight: bold;
-  font-size: xx-large;
+  font-size: var(--step-4);
   text-transform: uppercase;
 
 }
@@ -108,7 +120,7 @@ fieldset {
   font-style: italic;
   margin-top: 1em;
   margin-bottom: 0;
-  font-size: 1em;
+  font-size: var(--step-1);
   font-weight: normal;
 }
 
@@ -122,7 +134,7 @@ fieldset {
 }
 
 .section {
-  scroll-margin: 3em;
+  scroll-margin: var(--space-xl);
   border-bottom: 1px solid var(--color-blue);
   padding: 0 0 1em 0;
   margin: 1em 1em 0 1em;
@@ -149,16 +161,16 @@ fieldset {
   font-weight: bold;
   border-bottom: 1px solid var(--color-blue);
   padding: 0.5em 1em;
+  font-size: var(--step-0);
 }
 
 .dropdown {
-  height: 4.5rem;
+  height: var(--space-xl);
   border: none;
   display: block;
   background: transparent;
   width: 100%;
   color: var(--color-white);
-  font-size: inherit;
   position: fixed;
   top: 0;
   right: 0;
@@ -168,7 +180,7 @@ fieldset {
 }
 
 .topbar {
-  height: 4.5rem;
+  height: var(--space-xl);
   position: fixed;
   top: 0;
   width: 100%;
@@ -183,7 +195,7 @@ fieldset {
 .dropdown__content {
   transition: transform .5s cubic-bezier(.4,0,.2,1);
   position: fixed;
-  top: 2.5em;
+  top: var(--space-xl);
   right: 0;
   border-color: var(--color-blue);
   border-style: solid;
@@ -212,7 +224,7 @@ fieldset {
 .dropdown__content a {
   display: flex;
   gap: 4em;
-  font-size: smaller;
+  font-size: var(--step--1);
   text-transform: uppercase;
   justify-content: space-between;
   padding: 0.2em 0.5em;
@@ -257,9 +269,13 @@ fieldset {
   justify-content: space-between;
 }
 
+.section > header > h2 {
+  font-size: var(--step-2);
+}
+
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); 
   gap: 1em;
 }
 
@@ -281,7 +297,7 @@ fieldset {
 
 .gallery figcaption {
   font-style: italic;
-  font-size: smaller;
+  font-size: var(--step--1);
   text-align: center;
 }
 
@@ -380,7 +396,6 @@ fieldset {
  */
 
 @media only screen and (min-width: 750px) {
-  body { font-size: 1.8rem; }
   .title {text-align: center; }
   .section { padding: 0 1em 1em 1em; }
   .dropdown { width: initial; }
